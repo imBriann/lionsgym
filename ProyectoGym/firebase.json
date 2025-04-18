@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      { "source": "/", "destination": "/index.html" },
+      { "source": "/clases", "destination": "/clases.html" },
+      { "source": "/sedes", "destination": "/sedes.html" },
+      { "source": "/promociones", "destination": "/promociones.html" }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Promociones - Lions Gym</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://storage.googleapis.com/lionsgym.online/resources/css/style.css">
+</head>
+
+<body>
+  <header>
+    <a href="#"><img class="logo" style="max-width: 55px;"
+        src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" alt="LionsGym"></a>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/clases">Clases</a>
+      <a href="/sedes">Sedes</a>
+      <a href="/promociones">Promociones</a>
+      <a href="#"><button class="btn">Inscríbete</button></a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>Promociones Especiales</h2>
+    <div class="promo-grid">
+      <div class="promo-card">
+        <h3>2x1 en tu primer mes</h3>
+        <p>Inscríbete con un amigo y solo paga uno.</p>
+      </div>
+      <div class="promo-card">
+        <h3>50% descuento</h3>
+        <p>Para estudiantes con carnet universitario.</p>
+      </div>
+      <div class="promo-card">
+        <h3>Plan anual con regalo</h3>
+        <p>Obtén un kit de entrenamiento al inscribirte por un año.</p>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    fetch('https://mi-backend-g23q.onrender.com/')
+      .then(response => response.text())
+      .then(data => {
+        console.log('Respuesta del backend:', data);
+        document.getElementById('respuesta').innerText = data;
+      })
+      .catch(error => {
+        console.error('Error al conectar con el backend:', error);
+      });
+  </script>
+  
+  <div id="respuesta"></div>
+  
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h3>Lions Gym</h3>
+        <p>Transforma tu cuerpo, transforma tu vida.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="sedes.html">Sedes</a></li>
+          <li><a href="clases.html">Clases</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p><strong>Tel:</strong> +57 300 123 4567</p>
+        <p><strong>Email:</strong> info@lionsgym.com</p>
+        <div class="footer-redes">
+          <a href="#">Facebook</a> |
+          <a href="#">Instagram</a> |
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; 2025 Lions Gym. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
