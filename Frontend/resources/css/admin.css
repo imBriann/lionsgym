@@ -1,0 +1,204 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #111;
+    color: white;
+}
+
+/*-----------------------BARRA DE NAVEGACION-----------------------*/
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo {
+    max-width: 55px;
+}
+
+nav a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: #d3f349;
+}
+
+/*MENU HAMBURGUESA*/
+/* Ocultar el menú hamburguesa en pantallas grandes */
+
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
+    height: 2.5em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    transition:
+        stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked+svg {
+    transform: rotate(-45deg);
+}
+
+.hamburger input:checked+svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+
+@media (max-width: 1410px) {
+    .nav-links {
+        padding-top: 2rem;
+        position: fixed;
+        top: 86px;
+        right: -100%;
+        width: 250px;
+        height: 50rem;
+        background-color: #000000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-top: 1px solid #000000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transition: right 1s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        padding: 1rem;
+    }
+    
+    .barra-nav {
+        z-index: 1001; /* Más alto que el menú desplegable */
+        transition: transform 0.3s ease-in-out;
+      }
+
+    .menu-btn {
+        display: flex;
+        z-index: 1000;
+    }
+}
+
+
+/*-----------------------BOTONES GENERALES-----------------------*/
+.btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #d3f349;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/*-----------------------FOOTER-----------------------*/
+/* Footer */
+.footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 40px 20px 20px;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo h3 {
+    color: #d3f349;
+    margin-bottom: 5px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    padding-top: 5px;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+    padding-top: 2px;
+}
+
+.footer-links a,
+.footer-redes a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-redes a:hover {
+    color: #d3f349;
+}
+
+.footer-contacto p {
+    margin: 5px 0;
+    padding-top: 4px;
+}
+
+.footer-copy {
+    text-align: center;
+    border-top: 1px solid #222;
+    margin-top: 30px;
+    padding-top: 15px;
+    color: #777;
+}

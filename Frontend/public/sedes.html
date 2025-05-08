@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es-co">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lion's Gym</title>
+  <link rel="stylesheet" href="../resources/css/base.css">
+  <link rel="preload" href="../resources/css/base.css" as="style" />
+  <link rel="stylesheet" href="https://storage.googleapis.com/lionsgym.online/resources/css/sedes.css">
+  <link rel="preload" href="../resources/css/sedes.css" as="style" />
+  <link rel="preload" href="../resources/css/normalize.css" as="style" />
+  <link href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" rel="stylesheet" />
+  <link rel="icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+    type="image/x-icon" />
+  <link rel="shortcut icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+    type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header id="inicio" class="barra-nav">
+    <a href="#"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+        alt="LionsGym"></a>
+    <nav>
+      <div>
+        <div class="menu-btn" id="menu-btn">
+          <label class="hamburger">
+            <input type="checkbox" id="menu-toggle">
+            <svg viewBox="0 0 32 32">
+              <path class="line line-top-bottom"
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+              </path>
+              <path class="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" id="inicio-link">Inicio</a>
+          <a href="clases.html">Clases</a>
+          <a href="#">Sedes</a>
+          <a href="promociones.html">Promociones</a>
+          <a href="#"><button class="btn">Inscríbete</button></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sección de Sedes modificada (parte central) -->
+  <section id="sedes" class="section">
+    <h2>Nuestras Sedes</h2>
+    <div class="sedes-container">
+      <!-- Columna izquierda: Lista de sedes -->
+      <div class="sedes-list">
+        <ul>
+          <li class="sede-item active" data-lat="7.8374498" data-lng="-72.4664362">
+            <h3>Sede Principal</h3>
+            <p>Autopista San Antonio, Villa Del Rosario, Norte de Santander</p>
+          </li>
+          <li class="sede-item" data-lat="7.892691256306931" data-lng="-72.50233684178981">
+            <h3>Sede Diagonal Santander</h3>
+            <p>C. 5 #No. 2-38, Cúcuta, la dere, Cúcuta, Norte de Santander</p>
+          </li>
+          <li class="sede-item" data-lat="7.905328765499072" data-lng="-72.49060269802908">
+            <h3>Sede Guamiral</h3>
+            <p>Calle 6 Nº 11E-123, Cl. 6 Nte. #12e-108, Santa Lucia, Cúcuta, Norte de Santander/p>
+          </li>
+        </ul>
+      </div>
+      <!-- Columna derecha: Mapa -->
+      <div class="sedes-map">
+        <iframe id="mapa" src="https://www.google.com/maps?q=7.8374498,-72.4664362&hl=es&z=16&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="sed123">
+    <p>Encuentra nuestra sede más cercana y visítanos para empezar tu transformación.</p>
+  </div>
+
+  <!-- Footer (sin modificaciones) -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h3>Lions Gym</h3>
+        <p>Transforma tu cuerpo, transforma tu vida.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Sedes</a></li>
+          <li><a href="clases.html">Clases</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+        </ul>
+      </div>
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p><strong>Tel:</strong> +57 300 123 4567</p>
+        <p><strong>Email:</strong> info@lionsgym.com</p>
+        <div class="footer-redes">
+          <a href="https://es-la.facebook.com/" target="_blank">Facebook</a> |
+          <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
+          <a href="https://api.whatsapp.com/send/?phone=573001234567&text&type=phone_number&app_absent=0" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2025 Lions Gym. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://storage.googleapis.com/lionsgym.online/resources/scripts/barNav.js"></script>
+  <script src="https://storage.googleapis.com/lionsgym.online/resources/scripts/sedes.js"></script>
+</body>
+
+</html>

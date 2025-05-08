@@ -1,0 +1,135 @@
+/*-------------STYLE PROMOCIONES-------------*/
+.promociones h2 {
+  margin-top: 2rem;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+  color: white;
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+}
+
+.cont-promociones {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  justify-content: space-around;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Para que los hijos se acomoden en varias líneas si es necesario */
+  gap: 1.5rem; /* Espacio entre elementos cuando se apilen */
+}
+
+/* From Uiverse.io by Yaya12085 */ 
+.card {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-bottom: 2rem;
+    width: 440px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.25rem;
+    background-color: rgb(213, 213, 213);
+    padding: 1.5rem;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: #0c0c0c
+  }
+  
+  .price {
+    font-size: 3.75rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #090909
+  }
+
+  .discount {
+    background-color: orange;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 6px 8px;
+    border-radius: 6px;
+  }
+  .discount svg {
+    vertical-align: middle;
+    transform: translateY(-1px); /* Baja un poco el ícono */
+  }
+  
+
+  .desc {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.625;
+    color: rgb(38, 39, 39);
+  }
+  
+  .lists {
+    margin-bottom: 1.5rem;
+    flex: 1 1 0%;
+    color: rgb(38, 39, 39);
+  }
+  
+  .lists .list {
+    margin-bottom: 0.5rem;
+    display: flex;
+    margin-left: 0.5rem
+  }
+  
+  .lists .list svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    color: #424c16;
+  }
+
+/* RESPONSIVE */
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+  .promociones h2 {
+      font-size: 2.5rem;
+  }
+
+  .cont-promociones {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .card {
+      width: 90%;
+      height: auto;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .promociones h2 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+  }
+
+  .cont-promociones {
+      padding: 0 1rem;
+  }
+
+  .card {
+      width: 95%;
+      height: auto;
+      padding: 1rem;
+  }
+}
