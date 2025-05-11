@@ -24,7 +24,7 @@
 
 <body>
     <header id="inicio" class="barra-nav">
-        <a href="#"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+        <a href="index.html"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
                 alt="LionsGym"></a>
         <nav>
             <div>
@@ -111,21 +111,9 @@
             </p>
         </div>
     </div>
-    <script>
-        // Mostrar/ocultar contraseña
-        const passwordInput = document.getElementById('password');
-        const togglePassword = document.getElementById('togglePassword');
-        const eyeIcon = document.getElementById('eyeIcon');
-        const eyeOpen = document.getElementById('eyeOpen');
-        const eyeSlash = document.getElementById('eyeSlash');
-
-        togglePassword.addEventListener('click', function () {
-            const isPassword = passwordInput.type === 'password';
-            passwordInput.type = isPassword ? 'text' : 'password';
-            eyeOpen.style.display = isPassword ? 'none' : '';
-            eyeSlash.style.display = isPassword ? '' : 'none';
-        });
-    </script>
+    
+    <script src="../resources/js/login.js"></script>
+    <script src="../resources/js/script.js"></script>
 </body>
 
 </html>
