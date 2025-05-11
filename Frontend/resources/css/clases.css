@@ -1,0 +1,9 @@
+.clases h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+  color: white;
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+}

@@ -57,8 +57,8 @@ body::before {
 .input-group label {
     display: block;
     color: rgba(156, 163, 175, 1);
-    margin-bottom: 8px;
-    margin-top: 10px;
+    margin-bottom: 4px;
+    margin-top: 5px;
 }
 
 .input-group input {
