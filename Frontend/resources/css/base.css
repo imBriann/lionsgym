@@ -137,7 +137,7 @@ nav a.active {
 }
 
 /*-----------------------BOTONES GENERALES-----------------------*/
-.btn {
+.botonIngresar {
     padding: 0.8rem 1.5rem;
     background-color: #d3f349;
     border: none;
@@ -148,7 +148,7 @@ nav a.active {
     transition: transform 0.2s ease;
 }
 
-.btn:hover {
+.botonIngresar:hover {
     transform: scale(1.05);
 }
 
