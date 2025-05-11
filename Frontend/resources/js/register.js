@@ -21,3 +21,14 @@ toggleConfirmPassword.addEventListener('click', function () {
     eyeOpenConfirm.style.display = isPassword ? 'none' : '';
     eyeSlashConfirm.style.display = isPassword ? '' : 'none';
 });
+
+function openDatePicker() {
+    const input = document.getElementById('fecha_nacimiento');
+    // Chrome y navegadores basados en Blink permiten showPicker()
+    if (typeof input.showPicker === 'function') {
+        input.showPicker();
+    } else {
+        // Fallback: enfocamos el campo para abrir el calendario nativo
+        input.focus();
+    }
+}
