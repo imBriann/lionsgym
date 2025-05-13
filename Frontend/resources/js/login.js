@@ -1,13 +1,1 @@
-// Mostrar/ocultar contraseña
-const passwordInput = document.getElementById('password');
-const togglePassword = document.getElementById('togglePassword');
-const eyeIcon = document.getElementById('eyeIcon');
-const eyeOpen = document.getElementById('eyeOpen');
-const eyeSlash = document.getElementById('eyeSlash');
-
-togglePassword.addEventListener('click', function () {
-    const isPassword = passwordInput.type === 'password';
-    passwordInput.type = isPassword ? 'text' : 'password';
-    eyeOpen.style.display = isPassword ? 'none' : '';
-    eyeSlash.style.display = isPassword ? '' : 'none';
-});
+const _0x3015ef=_0x3770;function _0x3cc9(){const _0x5bbb1e=['eyeIcon','type','eyeOpen','268OrxMBV','28vbSExx','9618khlhDX','55UUksiP','1073815CthNEm','36yszTOj','click','5599216DEPbli','65igRozd','addEventListener','6wMMiTr','getElementById','togglePassword','text','none','style','1677460ZLjlSu','882032rgJHpz','eyeSlash','password','1217640wKDFqS','71IlhGRw','49017cYuSRL'];_0x3cc9=function(){return _0x5bbb1e;};return _0x3cc9();}function _0x3770(_0x4200a7,_0x25dab5){const _0x3cc9f2=_0x3cc9();return _0x3770=function(_0x377075,_0x7390fe){_0x377075=_0x377075-0x16a;let _0x185a78=_0x3cc9f2[_0x377075];return _0x185a78;},_0x3770(_0x4200a7,_0x25dab5);}(function(_0x140dba,_0x3cd5bc){const _0x33b400=_0x3770,_0x3fce37=_0x140dba();while(!![]){try{const _0xf87e1e=parseInt(_0x33b400(0x182))/0x1*(parseInt(_0x33b400(0x16f))/0x2)+-parseInt(_0x33b400(0x183))/0x3*(-parseInt(_0x33b400(0x16d))/0x4)+-parseInt(_0x33b400(0x171))/0x5*(parseInt(_0x33b400(0x177))/0x6)+parseInt(_0x33b400(0x16e))/0x7*(parseInt(_0x33b400(0x17e))/0x8)+-parseInt(_0x33b400(0x172))/0x9*(-parseInt(_0x33b400(0x17d))/0xa)+-parseInt(_0x33b400(0x170))/0xb*(-parseInt(_0x33b400(0x181))/0xc)+parseInt(_0x33b400(0x175))/0xd*(-parseInt(_0x33b400(0x174))/0xe);if(_0xf87e1e===_0x3cd5bc)break;else _0x3fce37['push'](_0x3fce37['shift']());}catch(_0x3e4c76){_0x3fce37['push'](_0x3fce37['shift']());}}}(_0x3cc9,0xcd53b));const passwordInput=document['getElementById']('password'),togglePassword=document['getElementById'](_0x3015ef(0x179)),eyeIcon=document[_0x3015ef(0x178)](_0x3015ef(0x16a)),eyeOpen=document[_0x3015ef(0x178)](_0x3015ef(0x16c)),eyeSlash=document['getElementById'](_0x3015ef(0x17f));togglePassword[_0x3015ef(0x176)](_0x3015ef(0x173),function(){const _0x363e7e=_0x3015ef,_0x383f68=passwordInput['type']===_0x363e7e(0x180);passwordInput[_0x363e7e(0x16b)]=_0x383f68?_0x363e7e(0x17a):_0x363e7e(0x180),eyeOpen[_0x363e7e(0x17c)]['display']=_0x383f68?_0x363e7e(0x17b):'',eyeSlash[_0x363e7e(0x17c)]['display']=_0x383f68?'':_0x363e7e(0x17b);});
