@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es-co">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lion's Gym</title>
+    <link rel="stylesheet" href="../resources/css/base.css">
+    <link rel="preload" href="../resources/css/base.css" as="style" />
+    <link rel="stylesheet" href="../resources/css/login.css">
+    <link rel="preload" href="../resources/css/login.css" as="style" />
+    <link rel="preload" href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" as="style" />
+    <link href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" rel="stylesheet" />
+    <link rel="icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+        type="image/x-icon" />
+    <link rel="shortcut icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+        type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header id="inicio" class="barra-nav">
+        <a href="index.html"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
+                alt="LionsGym"></a>
+        <nav>
+            <div>
+                <div class="menu-btn" id="menu-btn">
+                    <label class="hamburger">
+                        <input type="checkbox" id="menu-toggle">
+                        <svg viewBox="0 0 32 32">
+                            <path class="line line-top-bottom"
+                                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                            </path>
+                            <path class="line" d="M7 16 27 16"></path>
+                        </svg>
+                    </label>
+                </div>
+
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html" id="inicio-link">Inicio</a>
+                    <a href="clases.html">Clases</a>
+                    <a href="sedes.html">Sedes</a>
+                    <a href="promociones.html">Promociones</a>
+                    <a href="register.html"><button class="botonIngresar">Inscríbete</button></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- From Uiverse.io by Yaya12085 -->
+    <!-- SECCIÓN DE LOGIN ELIMINADA -->
+    <!-- Solo queda la sección de restablecimiento de contraseña -->
+    <div class="login-wrapper">
+        <div class="form-container">
+            <p class="title">Restablecer Contraseña</p>
+            <!-- Paso 1: Solicitar correo -->
+            <form class="form" id="requestEmailForm">
+                <div class="input-group" style="margin-bottom: 3rem;">
+                    <label for="resetEmail">Correo</label>
+                    <input type="email" name="resetEmail" id="resetEmail" required>
+                </div>
+                <button class="sign" type="submit">Enviar código</button>
+            </form>
+            <!-- Paso 2: Ingresar código (inicialmente oculto) -->
+            <div id="codeSection" style="display:none; margin-top: 2rem;">
+                <p>Hemos enviado un código a <span id="censoredEmail"></span></p>
+                <div class="input-group" style="margin-bottom: 3rem;">
+                    <label for="resetCode">Código</label>
+                    <input type="text" name="resetCode" id="resetCode" maxlength="6" required>
+                </div>
+                <button class="sign" id="verifyCodeBtn">Verificar código</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../resources/js/login.js"></script>
+    <script src="../resources/js/barNav.js"></script>
+    <script src="../resources/js/aviso.js"></script>
+    <script src="../resources/js/reset-password.js"></script>
+</body>
+
+</html>
