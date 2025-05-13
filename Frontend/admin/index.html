@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es-co">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Lion's Gym</title>
+    <link rel="stylesheet" href="../resources/css/base.css">
+    <link rel="preload" href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" as="style" />
+    <link href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" rel="stylesheet" />
+    <link rel="icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .admin-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .admin-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #22223b;
+        }
+        .admin-buttons-container {
+            background: #fff;
+            border-radius: 1.2rem;
+            box-shadow: 0 4px 24px rgba(34,34,59,0.13);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 950px;
+            z-index: 10;
+            position: relative;
+        }
+        .admin-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            width: 100%;
+        }
+        .admin-btn {
+            background: #22223b;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 1rem;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-family: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(34,34,59,0.12);
+            transition: background 0.2s, transform 0.2s, color 0.2s, border 0.2s;
+            outline: none;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.13);
+            /* Fondo sólido para evitar transparencia */
+            backdrop-filter: none !important;
+            z-index: 10;
+            position: relative;
+        }
+        .admin-btn:hover, .admin-btn:focus {
+            background: #f2a900;
+            color: #22223b;
+            border: 2px solid #22223b;
+            transform: translateY(-3px) scale(1.06);
+        }
+        .admin-section {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 2rem;
+        }
+        .admin-card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(34,34,59,0.07);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            color: black;
+        }
+        .admin-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #22223b;
+        }
+        .admin-card p {
+            color: #444;
+        }
+        @media (max-width: 600px) {
+            .admin-buttons-container {
+                padding: 1.2rem 0.5rem;
+            }
+            .admin-buttons {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .admin-btn {
+                width: 100%;
+                font-size: 1.1rem;
+                padding: 1.2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="barra-nav">
+        <a href="../public/index.html"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" alt="LionsGym"></a>
+        <nav>
+            <div>
+                <div class="nav-links" id="nav-links">
+                    <a href="../public/index.html">Sitio Principal</a>
+                    <a href="#">Soporte</a>
+                    <a href="#" onclick="logout()">Cerrar sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="admin-wrapper" >
+            <div class="admin-title" >Panel de Administración</div>
+            <div class="admin-buttons-container">
+                <div class="admin-buttons">
+                    <button class="admin-btn" onclick="location.href='usuarios.html'">Gestión de Usuarios</button>
+                    <button class="admin-btn" onclick="location.href='clases.html'">Gestión de Clases</button>
+                    <button class="admin-btn" onclick="location.href='sedes.html'">Gestión de Sedes</button>
+                    <button class="admin-btn" onclick="location.href='promociones.html'">Gestión de Promociones</button>
+                    <button class="admin-btn" onclick="location.href='reportes.html'">Reportes y Estadísticas</button>
+                    <button class="admin-btn" onclick="location.href='pagos.html'">Pagos y Membresías</button>
+                    <button class="admin-btn" onclick="location.href='horarios.html'">Horarios</button>
+                    <button class="admin-btn" onclick="location.href='configuracion.html'">Configuración</button>
+                    <button class="admin-btn" onclick="logout()">Cerrar sesión</button>
+                </div>
+            </div>
+            <section class="admin-section">
+                <div class="admin-card">
+                    <h2>Bienvenido/a, Administrador/a</h2>
+                    <p>
+                        Desde este panel puedes gestionar usuarios, clases, sedes, promociones, pagos, horarios, ver reportes y estadísticas, y modificar la configuración general del sistema.
+                    </p>
+                </div>
+                <div class="admin-card">
+                    <h2>Funciones principales</h2>
+                    <ul>
+                        <li>Crear, editar, eliminar y buscar usuarios (clientes y staff).</li>
+                        <li>Gestionar clases: horarios, instructores, cupos, inscripciones.</li>
+                        <li>Administrar sedes: información, horarios, personal asignado.</li>
+                        <li>Crear y modificar promociones y descuentos.</li>
+                        <li>Visualizar reportes de asistencia, pagos, membresías y estadísticas generales.</li>
+                        <li>Gestionar pagos, membresías y facturación.</li>
+                        <li>Configurar parámetros generales del sistema.</li>
+                        <li>Atender solicitudes y soporte.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        function logout() {
+            // Aquí puedes limpiar el almacenamiento local, cookies, etc.
+            alert('Sesión cerrada');
+            window.location.href = '../public/index.html';
+        }
+    </script>
+</body>
+</html>
