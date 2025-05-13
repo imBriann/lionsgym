@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Aquí deberías hacer la petición para enviar el código al correo
 
         // Censura el correo (ejemplo: j***e@gmail.com)
-        const censored = email.replace(/(.{1}).+(.{1}@.+)/, (m, a, b) => a + '***' + b);
+        const censored = email.replace(/(.{3}).+(.{1}@.+)/, (m, a, b) => a + '***' + b);
         censoredEmail.textContent = censored;
 
         emailForm.style.display = 'none';
