@@ -1,171 +1,608 @@
 <!DOCTYPE html>
-<html lang="es-co">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - Lion's Gym</title>
-    <link rel="stylesheet" href="../resources/css/base.css">
-    <link rel="preload" href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" as="style" />
-    <link href="https://storage.googleapis.com/lionsgym.online/resources/css/normalize.css" rel="stylesheet" />
-    <link rel="icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Dashboard de Administración</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .admin-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 3rem;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
         }
-        .admin-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: #22223b;
-        }
-        .admin-buttons-container {
-            background: #fff;
-            border-radius: 1.2rem;
-            box-shadow: 0 4px 24px rgba(34,34,59,0.13);
-            padding: 2.5rem 2rem;
-            margin-bottom: 2.5rem;
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 950px;
-            z-index: 10;
-            position: relative;
-        }
-        .admin-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            width: 100%;
-        }
-        .admin-btn {
-            background: #22223b;
+        
+        .sidebar {
+            min-height: 100vh;
+            background-color: #212529;
             color: #fff;
-            border: 2px solid #fff;
-            border-radius: 1rem;
-            padding: 1.5rem 3rem;
-            font-size: 1.3rem;
-            font-family: inherit;
-            font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 4px 16px rgba(34,34,59,0.12);
-            transition: background 0.2s, transform 0.2s, color 0.2s, border 0.2s;
-            outline: none;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.13);
-            /* Fondo sólido para evitar transparencia */
-            backdrop-filter: none !important;
-            z-index: 10;
-            position: relative;
+            transition: all 0.3s;
         }
-        .admin-btn:hover, .admin-btn:focus {
-            background: #f2a900;
-            color: #22223b;
-            border: 2px solid #22223b;
-            transform: translateY(-3px) scale(1.06);
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            cursor: pointer; /* Añadido para indicar que son clickables */
         }
-        .admin-section {
-            width: 100%;
-            max-width: 900px;
-            margin-top: 2rem;
+        
+        .sidebar .nav-link:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid #0d6efd;
         }
-        .admin-card {
-            background: #fff;
-            border-radius: 1rem;
-            box-shadow: 0 2px 12px rgba(34,34,59,0.07);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            color: black;
+        
+        .sidebar .nav-link.active {
+            color: #fff;
+            background-color: rgba(13, 110, 253, 0.2);
+            border-left: 3px solid #0d6efd;
         }
-        .admin-card h2 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #22223b;
+        
+        .sidebar .nav-link i {
+            width: 24px;
+            text-align: center;
+            margin-right: 10px;
         }
-        .admin-card p {
-            color: #444;
+        
+        .content {
+            padding: 20px;
         }
-        @media (max-width: 600px) {
-            .admin-buttons-container {
-                padding: 1.2rem 0.5rem;
-            }
-            .admin-buttons {
-                flex-direction: column;
-                gap: 1.2rem;
-            }
-            .admin-btn {
-                width: 100%;
-                font-size: 1.1rem;
-                padding: 1.2rem 0;
-            }
+        
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: #212529;
+        }
+        
+        .logo span {
+            color: #0d6efd;
+        }
+        
+        .nav-divider {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+        }
+        
+        .user-section {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-color: #0d6efd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .user-role {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .content-header {
+            margin-bottom: 25px;
+        }
+        
+        .content-title {
+            font-weight: 600;
+        }
+        
+        .badge-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 10px;
+            padding: 3px 6px;
+        }
+        /* Estilo para contenido principal simulado */
+        #mainContentPlaceholder {
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <header class="barra-nav">
-        <a href="../public/index.html"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" alt="LionsGym"></a>
-        <nav>
-            <div>
-                <div class="nav-links" id="nav-links">
-                    <a href="../public/index.html">Sitio Principal</a>
-                    <a href="#">Soporte</a>
-                    <a href="#" onclick="logout()">Cerrar sesión</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-3 p-0 sidebar d-flex flex-column">
+                <div class="d-flex p-3 align-items-center">
+                    <h3 class="logo text-white m-0">Admin<span>Panel</span> LionsGym</h3>
+                </div>
+                <div class="nav-divider"></div>
+                <div class="my-2"></div>
+                <ul class="nav flex-column" id="sidebarNav">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-title="Dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Gestión de Clases">
+                            <i class="fas fa-dumbbell"></i> Gestión de Clases
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Usuarios">
+                            <i class="fas fa-users"></i> Usuarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Promociones">
+                            <i class="fas fa-percent"></i> Promociones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Sedes">
+                            <i class="fas fa-building"></i> Sedes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Reportes y Estadísticas">
+                            <i class="fas fa-chart-bar"></i> Reportes y Estadísticas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Pagos y Membresías">
+                            <i class="fas fa-credit-card"></i> Pagos y Membresías
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Horario">
+                            <i class="fas fa-calendar-alt"></i> Horario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-title="Configuración">
+                            <i class="fas fa-cog"></i> Configuración
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="user-section mt-auto">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div class="user-name">Admin User</div>
+                            <div class="user-role">Administrador</div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="#" class="btn btn-outline-light btn-sm w-100" id="logoutButton">
+                            <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <main>
-        <div class="admin-wrapper" >
-            <div class="admin-title" >Panel de Administración</div>
-            <div class="admin-buttons-container">
-                <div class="admin-buttons">
-                    <button class="admin-btn" onclick="location.href='usuarios.html'">Gestión de Usuarios</button>
-                    <button class="admin-btn" onclick="location.href='clases.html'">Gestión de Clases</button>
-                    <button class="admin-btn" onclick="location.href='sedes.html'">Gestión de Sedes</button>
-                    <button class="admin-btn" onclick="location.href='promociones.html'">Gestión de Promociones</button>
-                    <button class="admin-btn" onclick="location.href='reportes.html'">Reportes y Estadísticas</button>
-                    <button class="admin-btn" onclick="location.href='pagos.html'">Pagos y Membresías</button>
-                    <button class="admin-btn" onclick="location.href='horarios.html'">Horarios</button>
-                    <button class="admin-btn" onclick="location.href='configuracion.html'">Configuración</button>
-                    <button class="admin-btn" onclick="logout()">Cerrar sesión</button>
+            
+            <div class="col-lg-10 col-md-9 ms-auto content">
+                <nav class="navbar navbar-expand-lg navbar-light mb-4 rounded">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <form class="d-flex me-auto" id="searchForm">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-0">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </span>
+                                    <input class="form-control border-0 bg-light" type="search" placeholder="Buscar..." id="searchInput">
+                                </div>
+                            </form>
+                            <ul class="navbar-nav">
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link position-relative" href="#" id="notificationsLink">
+                                        <i class="fas fa-bell fa-lg"></i>
+                                        <span class="position-absolute badge rounded-pill bg-danger badge-notification">5</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                    <a class="nav-link position-relative" href="#" id="messagesLink">
+                                        <i class="fas fa-envelope fa-lg"></i>
+                                        <span class="position-absolute badge rounded-pill bg-primary badge-notification">3</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                
+                <div class="content-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h1 class="content-title" id="contentTitle">Dashboard</h1>
+                        <div>
+                            <button class="btn btn-primary" id="quickActionButton">
+                                <i class="fas fa-plus me-2"></i>Acción Rápida
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <section class="admin-section">
-                <div class="admin-card">
-                    <h2>Bienvenido/a, Administrador/a</h2>
-                    <p>
-                        Desde este panel puedes gestionar usuarios, clases, sedes, promociones, pagos, horarios, ver reportes y estadísticas, y modificar la configuración general del sistema.
-                    </p>
+                
+                <div id="dashboardSection">
+                    <div class="row g-4 mb-4">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">Total Usuarios</h6>
+                                            <h3 class="mb-0">1,524</h3>
+                                        </div>
+                                        <div class="bg-primary bg-opacity-10 p-3 rounded">
+                                            <i class="fas fa-users text-primary fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="text-success">
+                                            <i class="fas fa-arrow-up me-1"></i>4.6%
+                                        </span>
+                                        <span class="text-muted ms-2">Desde el mes pasado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">Ingresos</h6>
+                                            <h3 class="mb-0">$15,240</h3>
+                                        </div>
+                                        <div class="bg-success bg-opacity-10 p-3 rounded">
+                                            <i class="fas fa-dollar-sign text-success fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="text-success">
+                                            <i class="fas fa-arrow-up me-1"></i>8.3%
+                                        </span>
+                                        <span class="text-muted ms-2">Desde el mes pasado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">Clases Activas</h6>
+                                            <h3 class="mb-0">45</h3>
+                                        </div>
+                                        <div class="bg-warning bg-opacity-10 p-3 rounded">
+                                            <i class="fas fa-dumbbell text-warning fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="text-success">
+                                            <i class="fas fa-arrow-up me-1"></i>12.7%
+                                        </span>
+                                        <span class="text-muted ms-2">Desde el mes pasado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">Nuevas Membresías</h6>
+                                            <h3 class="mb-0">87</h3>
+                                        </div>
+                                        <div class="bg-info bg-opacity-10 p-3 rounded">
+                                            <i class="fas fa-id-card text-info fa-2x"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="text-danger">
+                                            <i class="fas fa-arrow-down me-1"></i>2.4%
+                                        </span>
+                                        <span class="text-muted ms-2">Desde el mes pasado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="admin-card">
-                    <h2>Funciones principales</h2>
-                    <ul>
-                        <li>Crear, editar, eliminar y buscar usuarios (clientes y staff).</li>
-                        <li>Gestionar clases: horarios, instructores, cupos, inscripciones.</li>
-                        <li>Administrar sedes: información, horarios, personal asignado.</li>
-                        <li>Crear y modificar promociones y descuentos.</li>
-                        <li>Visualizar reportes de asistencia, pagos, membresías y estadísticas generales.</li>
-                        <li>Gestionar pagos, membresías y facturación.</li>
-                        <li>Configurar parámetros generales del sistema.</li>
-                        <li>Atender solicitudes y soporte.</li>
-                    </ul>
+                
+                <div class="card border-0 shadow-sm mb-4" id="usersTableSection">
+                    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Usuarios Recientes</h5>
+                        <button class="btn btn-sm btn-outline-primary" id="viewAllUsersButton">Ver Todos</button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="recentUsersTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Membresía</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Fecha Registro</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td class="user-name-cell">Juan Pérez</td>
+                                        <td>Premium</td>
+                                        <td><span class="badge bg-success">Activo</span></td>
+                                        <td>15/04/2025</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item action-view" href="#"><i class="fas fa-eye me-2"></i>Ver</a></li>
+                                                    <li><a class="dropdown-item action-edit" href="#"><i class="fas fa-edit me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item text-danger action-delete" href="#"><i class="fas fa-trash me-2"></i>Eliminar</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td class="user-name-cell">María López</td>
+                                        <td>Estándar</td>
+                                        <td><span class="badge bg-success">Activo</span></td>
+                                        <td>12/04/2025</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item action-view" href="#"><i class="fas fa-eye me-2"></i>Ver</a></li>
+                                                    <li><a class="dropdown-item action-edit" href="#"><i class="fas fa-edit me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item text-danger action-delete" href="#"><i class="fas fa-trash me-2"></i>Eliminar</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td class="user-name-cell">Carlos Rodríguez</td>
+                                        <td>Premium</td>
+                                        <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+                                        <td>10/04/2025</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item action-view" href="#"><i class="fas fa-eye me-2"></i>Ver</a></li>
+                                                    <li><a class="dropdown-item action-edit" href="#"><i class="fas fa-edit me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item text-danger action-delete" href="#"><i class="fas fa-trash me-2"></i>Eliminar</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td class="user-name-cell">Ana Martínez</td>
+                                        <td>Básico</td>
+                                        <td><span class="badge bg-danger">Inactivo</span></td>
+                                        <td>08/04/2025</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item action-view" href="#"><i class="fas fa-eye me-2"></i>Ver</a></li>
+                                                    <li><a class="dropdown-item action-edit" href="#"><i class="fas fa-edit me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item text-danger action-delete" href="#"><i class="fas fa-trash me-2"></i>Eliminar</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td class="user-name-cell">Pedro González</td>
+                                        <td>Premium</td>
+                                        <td><span class="badge bg-success">Activo</span></td>
+                                        <td>05/04/2025</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item action-view" href="#"><i class="fas fa-eye me-2"></i>Ver</a></li>
+                                                    <li><a class="dropdown-item action-edit" href="#"><i class="fas fa-edit me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item text-danger action-delete" href="#"><i class="fas fa-trash me-2"></i>Eliminar</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            </section>
+                <div id="mainContentPlaceholder" class="d-none">
+                    Contenido de la sección seleccionada aparecerá aquí.
+                </div>
+            </div>  
         </div>
-    </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function logout() {
-            // Aquí puedes limpiar el almacenamiento local, cookies, etc.
-            alert('Sesión cerrada');
-            window.location.href = '../public/index.html';
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarNav = document.getElementById('sidebarNav');
+            const navLinks = sidebarNav.querySelectorAll('.nav-link');
+            const contentTitle = document.getElementById('contentTitle');
+            const quickActionButton = document.getElementById('quickActionButton');
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('searchInput');
+            const notificationsLink = document.getElementById('notificationsLink');
+            const messagesLink = document.getElementById('messagesLink');
+            const viewAllUsersButton = document.getElementById('viewAllUsersButton');
+            const logoutButton = document.getElementById('logoutButton');
+            const recentUsersTable = document.getElementById('recentUsersTable');
+            
+            const dashboardSection = document.getElementById('dashboardSection');
+            const usersTableSection = document.getElementById('usersTableSection');
+            const mainContentPlaceholder = document.getElementById('mainContentPlaceholder');
+
+            // 1. Sidebar Navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    // Add active class to the clicked link
+                    this.classList.add('active');
+                    
+                    // Update content title
+                    const newTitle = this.dataset.title;
+                    contentTitle.textContent = newTitle;
+
+                    // Simulate content change
+                    if (newTitle === 'Dashboard') {
+                        dashboardSection.classList.remove('d-none');
+                        usersTableSection.classList.remove('d-none');
+                        mainContentPlaceholder.classList.add('d-none');
+                    } else {
+                        dashboardSection.classList.add('d-none');
+                        usersTableSection.classList.add('d-none');
+                        mainContentPlaceholder.classList.remove('d-none');
+                        mainContentPlaceholder.innerHTML = `Cargando contenido para: <strong>${newTitle}</strong>... <br><small>(Esta es una simulación. Aquí se mostraría la interfaz real para ${newTitle})</small>`;
+                    }
+                    // Scroll to top of content area
+                    document.querySelector('.content').scrollTop = 0;
+                });
+            });
+
+            // 2. Quick Action Button
+            if (quickActionButton) {
+                quickActionButton.addEventListener('click', function () {
+                    alert('¡Acción Rápida ejecutada! (Simulación)');
+                });
+            }
+
+            // 3. Search Form
+            if (searchForm) {
+                searchForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    const searchTerm = searchInput.value.trim();
+                    if (searchTerm) {
+                        alert(`Buscando: "${searchTerm}" (Simulación)`);
+                    } else {
+                        alert('Por favor, ingrese un término de búsqueda.');
+                    }
+                });
+            }
+
+            // 4. Notifications Link
+            if (notificationsLink) {
+                notificationsLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    alert('Mostrando notificaciones... (Simulación)\nTienes 5 notificaciones nuevas.');
+                });
+            }
+
+            // 5. Messages Link
+            if (messagesLink) {
+                messagesLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    alert('Mostrando mensajes... (Simulación)\nTienes 3 mensajes nuevos.');
+                });
+            }
+
+            // 6. View All Users Button
+            if (viewAllUsersButton) {
+                viewAllUsersButton.addEventListener('click', function () {
+                    alert('Mostrando todos los usuarios... (Simulación)');
+                     // Simulate navigation to a full users page
+                    contentTitle.textContent = 'Todos los Usuarios';
+                    dashboardSection.classList.add('d-none');
+                    usersTableSection.classList.add('d-none'); // O podrías modificar esta tabla para mostrar más
+                    mainContentPlaceholder.classList.remove('d-none');
+                    mainContentPlaceholder.innerHTML = `Aquí se mostraría la lista completa de usuarios con paginación y filtros.`;
+                });
+            }
+
+            // 7. Table Actions (View, Edit, Delete)
+            if (recentUsersTable) {
+                recentUsersTable.addEventListener('click', function (event) {
+                    const target = event.target.closest('a.dropdown-item');
+                    if (!target) return;
+
+                    event.preventDefault();
+                    const row = target.closest('tr');
+                    const userName = row.querySelector('.user-name-cell').textContent.trim();
+
+                    if (target.classList.contains('action-view')) {
+                        alert(`Viendo detalles de: ${userName} (Simulación)`);
+                    } else if (target.classList.contains('action-edit')) {
+                        alert(`Editando información de: ${userName} (Simulación)`);
+                    } else if (target.classList.contains('action-delete')) {
+                        if (confirm(`¿Estás seguro de que quieres eliminar a ${userName}? (Simulación)`)) {
+                            alert(`Usuario ${userName} eliminado. (Simulación)`);
+                            // Aquí podrías, por ejemplo, eliminar la fila de la tabla:
+                            // row.remove(); 
+                            // Pero recuerda que esto es solo client-side y se perdería al recargar.
+                        }
+                    }
+                });
+            }
+
+            // 8. Logout Button
+            if (logoutButton) {
+                logoutButton.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                        alert('Cerrando sesión... Redirigiendo a la página de inicio. (Simulación)');
+                        // En una aplicación real:
+                        // window.location.href = '/login.html'; 
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
