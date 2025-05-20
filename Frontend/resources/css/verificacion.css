@@ -1,0 +1,94 @@
+body {
+  background: #f5f6fa;
+  font-family: 'Urbanist', 'League Spartan', Arial, sans-serif;
+}
+
+.verificacion-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.verificacion-container {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.verificacion-container h2 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #22223b;
+}
+
+#numeroCensurado {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #4b5563;
+}
+
+.code-inputs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+.code-inputs input {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: border-color 0.2s;
+}
+.code-inputs input:focus {
+  border-color: #fbbf24;
+  outline: none;
+  background: #fffbe6;
+}
+
+.verificacion-container button,
+#reenviarBtn {
+  background: linear-gradient(90deg, #fbbf24 0%, #f59e42 100%);
+  color: #22223b;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.verificacion-container button:disabled,
+#reenviarBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+#timer {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+#mensaje {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #e63946;
+  min-height: 1.5em;
+}
+#mensaje.verificado {
+  color: #16a34a;
+  font-weight: 700;
+}

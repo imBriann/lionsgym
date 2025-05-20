@@ -237,3 +237,10 @@ body::before {
   display: block;
 }
 
+.input-error {
+  color: #e63946;
+  font-size: 0.95em;
+  margin-top: 0.2em;
+  min-height: 1.2em;
+}
+
