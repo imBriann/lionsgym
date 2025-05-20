@@ -113,6 +113,37 @@ function crearInputsCodigo(length) {
     container.children[0].focus();
 }
 
+function mostrarModalExito() {
+    // Crear modal si no existe
+    let modal = document.getElementById('modalExito');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'modalExito';
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100vw';
+        modal.style.height = '100vh';
+        modal.style.background = 'rgba(0,0,0,0.4)';
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.zIndex = '9999';
+        modal.innerHTML = `
+            <div style="background:#fff;padding:2.5rem 2rem;border-radius:1.2rem;box-shadow:0 4px 24px 0 rgba(0,0,0,0.15);text-align:center;max-width:350px; color:#22223b;">
+                <h3 style="color:#16a34a;margin-bottom:1em;">¡Usuario registrado con éxito!</h3>
+                <p style="margin-bottom:2em;">Tu número ha sido verificado correctamente.<br>Ahora puedes iniciar sesión y disfrutar de Lion's Gym.</p>
+                <button id="btnModalExitoAceptar" style="background:#fbbf24;color:#22223b;border:none;border-radius:8px;padding:0.7rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;">Aceptar</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        document.getElementById('btnModalExitoAceptar').onclick = function() {
+            window.location.href = "index.html";
+        };
+    }
+    modal.style.display = 'flex';
+}
+
 document.getElementById('verificarBtn').onclick = function () {
     const inputs = document.querySelectorAll('#inputsContainer input');
     let codigoIngresado = '';
@@ -125,6 +156,7 @@ document.getElementById('verificarBtn').onclick = function () {
     if (codigoIngresado === codigoEnviado) {
         document.getElementById('mensaje').textContent = '¡Número verificado correctamente!';
         document.getElementById('mensaje').classList.add('verificado');
+        setTimeout(mostrarModalExito, 600); // Mostrar modal después de breve confirmación
     } else {
         document.getElementById('mensaje').textContent = 'El código ingresado es incorrecto. Intenta nuevamente.';
         document.getElementById('mensaje').classList.remove('verificado');
