@@ -78,6 +78,7 @@
     min-height: 300px;
     border: 0;
     border-radius: 15px;
+    filter: invert(90%) hue-rotate(180deg);
   }
   
   .sed123 p {
