@@ -84,7 +84,7 @@ Para su funcionamiento, requiere que el backend esté en ejecución y accesible.
 ## Estructura del Proyecto (Enfoque Backend)
  ```
 lionsgym/
-├── Backend/                 # === FOCO PRINCIPAL DE ESTE README ===
+├── Backend/                 
 │   ├── src/
 │   │   ├── main/
 │   │   │   ├── java/com/lionsgym/webApp/  # Código fuente Java
