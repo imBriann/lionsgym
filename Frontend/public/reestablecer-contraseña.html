@@ -24,8 +24,8 @@
 
 <body>
     <header id="inicio" class="barra-nav">
-        <a href="index.html"><img class="logo" src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png"
-                alt="LionsGym"></a>
+        <a href="index.html"><img class="logo"
+                src="https://storage.googleapis.com/lionsgym.online/resources/img/logoGym.png" alt="LionsGym"></a>
         <nav>
             <div>
                 <div class="menu-btn" id="menu-btn">
@@ -74,9 +74,24 @@
                 </div>
                 <button class="sign" id="verifyCodeBtn">Verificar código</button>
             </div>
+
+            <form class="form" id="resetPasswordForm" style="display:none; margin-top: 2rem;">
+                <p>Código verificado. Ahora puedes crear tu nueva contraseña.</p>
+                <div class="input-group">
+                    <label for="newPassword">Nueva Contraseña</label>
+                    <input type="password" name="newPassword" id="newPassword" required>
+                </div>
+                <div class="input-group" style="margin-bottom: 3rem;">
+                    <label for="confirmNewPassword">Confirmar Nueva Contraseña</label>
+                    <input type="password" name="confirmNewPassword" id="confirmNewPassword" required>
+                </div>
+                <button class="sign" type="submit">Cambiar contraseña</button>
+            </form>
+
+            <div id="resetMessage" style="text-align:center; margin-top: 1rem;"></div>
         </div>
     </div>
-    
+
     <script src="../resources/js/login.js"></script>
     <script src="../resources/js/barNav.js"></script>
     <script src="../resources/js/aviso.js"></script>
