@@ -1,1 +1,157 @@
-function _0x212d() { const _0x4757ee = ['35795bcgiqb', 'none', '479836rptpDn', '10PtZdBA', 'resetEmail', '996093mREfOj', 'submit', 'getElementById', '119msjpcv', 'requestEmailForm', '9nCAxlX', '294BOBqoG', 'addEventListener', 'preventDefault', 'codeSection', '47203orQDVY', '180584ALORSh', 'display', '535148AeiZGP', '7895734hlagqV', 'block', 'textContent', 'value']; _0x212d = function () { return _0x4757ee; }; return _0x212d(); } function _0x160d(_0x31d0a8, _0xdce3b0) { const _0x212d66 = _0x212d(); return _0x160d = function (_0x160d6f, _0x3065f2) { _0x160d6f = _0x160d6f - 0xc0; let _0xb411e1 = _0x212d66[_0x160d6f]; return _0xb411e1; }, _0x160d(_0x31d0a8, _0xdce3b0); } (function (_0x556ae0, _0x29bdd9) { const _0x2f392b = _0x160d, _0xa5ab87 = _0x556ae0(); while (!![]) { try { const _0x5e5506 = parseInt(_0x2f392b(0xd3)) / 0x1 + -parseInt(_0x2f392b(0xc6)) / 0x2 + parseInt(_0x2f392b(0xce)) / 0x3 * (-parseInt(_0x2f392b(0xd6)) / 0x4) + -parseInt(_0x2f392b(0xc4)) / 0x5 * (parseInt(_0x2f392b(0xcf)) / 0x6) + -parseInt(_0x2f392b(0xcc)) / 0x7 * (-parseInt(_0x2f392b(0xd4)) / 0x8) + -parseInt(_0x2f392b(0xc9)) / 0x9 * (-parseInt(_0x2f392b(0xc7)) / 0xa) + parseInt(_0x2f392b(0xc0)) / 0xb; if (_0x5e5506 === _0x29bdd9) break; else _0xa5ab87['push'](_0xa5ab87['shift']()); } catch (_0x4c2c4c) { _0xa5ab87['push'](_0xa5ab87['shift']()); } } }(_0x212d, 0x41451), document['addEventListener']('DOMContentLoaded', () => { const _0x28a6af = _0x160d, _0x3aa62f = document[_0x28a6af(0xcb)](_0x28a6af(0xcd)), _0x334f6b = document[_0x28a6af(0xcb)](_0x28a6af(0xd2)), _0x4d376d = document[_0x28a6af(0xcb)]('censoredEmail'); _0x3aa62f[_0x28a6af(0xd0)](_0x28a6af(0xca), function (_0x1b2281) { const _0x4578ab = _0x28a6af; _0x1b2281[_0x4578ab(0xd1)](); const _0x245c4a = document[_0x4578ab(0xcb)](_0x4578ab(0xc8))[_0x4578ab(0xc3)], _0x49f157 = _0x245c4a['replace'](/(.{3}).+(.{1}@.+)/, (_0x279782, _0x2e40a5, _0x4e7fb5) => _0x2e40a5 + '***' + _0x4e7fb5); _0x4d376d[_0x4578ab(0xc2)] = _0x49f157, _0x3aa62f['style']['display'] = _0x4578ab(0xc5), _0x334f6b['style'][_0x4578ab(0xd5)] = _0x4578ab(0xc1); }); }));
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Referencias a los elementos del DOM ---
+    const requestEmailForm = document.getElementById('requestEmailForm');
+    const resetEmailInput = document.getElementById('resetEmail');
+    const codeSection = document.getElementById('codeSection');
+    const censoredEmailSpan = document.getElementById('censoredEmail');
+    const resetCodeInput = document.getElementById('resetCode');
+    const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+    const resetPasswordForm = document.getElementById('resetPasswordForm');
+    const newPasswordInput = document.getElementById('newPassword');
+    const confirmNewPasswordInput = document.getElementById('confirmNewPassword');
+    const messageDiv = document.getElementById('resetMessage');
+
+    let codigoEnviado = ''; // Variable para almacenar el código recibido del servicio de WhatsApp
+    let numeroRealParaEnviar = ''; // Variable para almacenar el número de teléfono del usuario
+
+    // --- Manejador del Paso 1: Enviar correo para obtener el número y enviar el código ---
+    requestEmailForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const email = resetEmailInput.value.trim();
+
+        if (!email) {
+            messageDiv.textContent = 'Por favor, ingresa tu correo electrónico.';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        messageDiv.textContent = 'Verificando correo, por favor espera...';
+        messageDiv.style.color = 'blue';
+
+        // --- 1. PRIMERA LLAMADA: OBTENER NÚMERO DE TELÉFONO DESDE TU BACKEND ---
+        fetch('http://localhost:8081/api/usuarios/get-phone-for-reset', { // NUEVO ENDPOINT que debes crear en tu backend
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.mensaje || 'Correo no encontrado.'); });
+            }
+            return response.json(); // Espera una respuesta como { "phone": "3001234567" }
+        })
+        .then(data => {
+            if (!data.phone) {
+                throw new Error('No se encontró un número de teléfono para este correo.');
+            }
+            numeroRealParaEnviar = data.phone;
+            messageDiv.textContent = 'Enviando código a tu WhatsApp...';
+
+            // --- 2. SEGUNDA LLAMADA: ENVIAR CÓDIGO USANDO LA API DE WHATSAPP ---
+            // Esto es igual a como funciona en verificacion.js
+            return fetch("https://whatsappverificacion.onrender.com/send-code", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ phone: numeroRealParaEnviar })
+            });
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            if (data.code) {
+                codigoEnviado = data.code.toString(); // Guardamos el código que nos devolvió la API
+                messageDiv.textContent = 'Hemos enviado un código a tu WhatsApp.';
+                messageDiv.style.color = 'green';
+
+                // Ocultar formulario de email y mostrar sección de código
+                requestEmailForm.style.display = 'none';
+                codeSection.style.display = 'block';
+
+                const censoredEmail = email.replace(/(.{3}).+(.{1}@.+)/, '$1***$2');
+                censoredEmailSpan.textContent = censoredEmail;
+            } else {
+                throw new Error('No se pudo enviar el código de verificación.');
+            }
+        })
+        .catch(error => {
+            messageDiv.textContent = error.message;
+            messageDiv.style.color = 'red';
+        });
+    });
+
+    // --- Manejador del Paso 2: Verificar el código (en el frontend) ---
+    verifyCodeBtn.addEventListener('click', () => {
+        const codeIngresado = resetCodeInput.value.trim();
+
+        if (!codeIngresado || codeIngresado.length !== 6) {
+            messageDiv.textContent = 'Por favor, ingresa el código de 6 dígitos.';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        // La comparación se hace aquí mismo, en el frontend
+        if (codeIngresado === codigoEnviado) {
+            messageDiv.textContent = 'Código verificado correctamente.';
+            messageDiv.style.color = 'green';
+
+            // Ocultar sección de código y mostrar formulario de nueva contraseña
+            codeSection.style.display = 'none';
+            resetPasswordForm.style.display = 'block';
+        } else {
+            messageDiv.textContent = 'El código ingresado es incorrecto.';
+            messageDiv.style.color = 'red';
+        }
+    });
+
+    // --- Manejador del Paso 3: Establecer la nueva contraseña ---
+    resetPasswordForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const newPassword = newPasswordInput.value;
+        const confirmPassword = confirmNewPasswordInput.value;
+        const email = resetEmailInput.value.trim(); // Se necesita para identificar al usuario
+
+        if (!newPassword || !confirmPassword) {
+            messageDiv.textContent = 'Ambos campos de contraseña son obligatorios.';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            messageDiv.textContent = 'Las contraseñas no coinciden.';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        messageDiv.textContent = 'Actualizando contraseña...';
+        messageDiv.style.color = 'blue';
+
+        // --- 3. TERCERA LLAMADA: ENVIAR LA NUEVA CONTRASEÑA A TU BACKEND ---
+        fetch('http://localhost:8081/api/usuarios/reset-password', { // ENDPOINT que debes crear en tu backend
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: email,
+                newPassword: newPassword
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.mensaje || 'No se pudo actualizar la contraseña.'); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            messageDiv.textContent = data.mensaje || '¡Contraseña actualizada con éxito!';
+            messageDiv.style.color = 'green';
+            setTimeout(() => { window.location.href = 'login.html'; }, 3000);
+        })
+        .catch(error => {
+            messageDiv.textContent = error.message;
+            messageDiv.style.color = 'red';
+        });
+    });
+});
