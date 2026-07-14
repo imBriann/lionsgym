@@ -134,7 +134,7 @@
 
 /* CONFIGURACIONES SECCION 1 (IMG1) */
 .promo-1 {
-    background-image: url('https://storage.googleapis.com/lionsgym.online/resources/img/home1.webp');
+    background-image: url('../img/home1.webp');
 }
 
 /* CONFIGURACIONES SECCION 2 (IMG2) */
@@ -153,7 +153,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://storage.googleapis.com/lionsgym.online/resources/img/home2.webp');
+    background-image: url('../img/home2.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
