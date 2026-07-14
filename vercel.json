@@ -1,0 +1,56 @@
+{
+  "rewrites": [
+    {
+      "source": "/resources/(.*)",
+      "destination": "/Frontend/resources/$1"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/Frontend/admin/$1"
+    },
+    {
+      "source": "/",
+      "destination": "/Frontend/public/index.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/Frontend/public/index.html"
+    },
+    {
+      "source": "/clases.html",
+      "destination": "/Frontend/public/clases.html"
+    },
+    {
+      "source": "/login.html",
+      "destination": "/Frontend/public/login.html"
+    },
+    {
+      "source": "/register.html",
+      "destination": "/Frontend/public/register.html"
+    },
+    {
+      "source": "/sedes.html",
+      "destination": "/Frontend/public/sedes.html"
+    },
+    {
+      "source": "/promociones.html",
+      "destination": "/Frontend/public/promociones.html"
+    },
+    {
+      "source": "/verificacion.html",
+      "destination": "/Frontend/public/verificacion.html"
+    },
+    {
+      "source": "/reestablecer-contraseña.html",
+      "destination": "/Frontend/public/reestablecer-contraseña.html"
+    },
+    {
+      "source": "/404.html",
+      "destination": "/Frontend/public/404.html"
+    },
+    {
+      "source": "/prueba.html",
+      "destination": "/Frontend/public/prueba.html"
+    }
+  ]
+}
